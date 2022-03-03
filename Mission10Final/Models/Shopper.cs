@@ -34,5 +34,8 @@ namespace Mission10Final.Models
 
         [Required(ErrorMessage = "Please the country:")]
         public string Country { get; set; }
+
+        [BindNever]
+        public bool OrderReceived { get; set; }
     }
 }

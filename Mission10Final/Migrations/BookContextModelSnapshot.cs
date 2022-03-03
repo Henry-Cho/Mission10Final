@@ -113,6 +113,9 @@ namespace Mission10Final.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("OrderReceived")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("TEXT");
