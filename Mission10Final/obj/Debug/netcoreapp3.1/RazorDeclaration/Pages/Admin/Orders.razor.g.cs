@@ -53,13 +53,49 @@ using Mission10Final.Models;
 #line default
 #line hidden
 #nullable disable
-    public partial class Orders : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/admin/orders")]
+    public partial class Orders : OwningComponentBase<IShopperRepository>
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 10 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/Orders.razor"
+       
+    public IShopperRepository repo => Service;
+
+    public IEnumerable<Shopper> AllOrders { get; set; }
+    public IEnumerable<Shopper> OrderedBooks { get; set; }
+    public IEnumerable<Shopper> ShippedBooks { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        AllOrders = await repo.Shoppers.ToListAsync();
+        OrderedBooks = AllOrders.Where(x => !x.OrderReceived);
+        ShippedBooks = AllOrders.Where(x => x.OrderReceived);
+    }
+
+    public void ShipBook(int id) => UpdateShip(id, true);
+
+    public void CancelShip(int id) => UpdateShip(id, false);
+
+    private void UpdateShip(int id, bool shipped)
+    {
+        Shopper s = repo.Shoppers.FirstOrDefault(x => x.ShopperId == id);
+        s.OrderReceived = shipped;
+        repo.SaveShopper(s);
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

@@ -1,9 +1,9 @@
 ﻿@page "/admin/orders"
 @inherits OwningComponentBase<IShopperRepository>
 
-<OrderTable TableTitle="Ordered" Donations="UncollectedDonations" ButtonLabel="Collected" DonationSelected="CollectDonation"></OrderTable>
+<OrderTable TableTitle="Ordered" Shoppers="OrderedBooks" ButtonLabel="Ship" OrderSelected="ShipBook"></OrderTable>
 
-<OrderTable TableTitle="Shipped" Donations="CollectedDonations" ButtonLabel="Reset" DonationSelected="ResetDonation"></OrderTable>
+<OrderTable TableTitle="Shipped" Shoppers="ShippedBooks" ButtonLabel="Cancel" OrderSelected="CancelShip"></OrderTable>
 
 <button class="btn btn-info" @onclick="@(x=> UpdateData())">Refresh Data</button>
 

@@ -53,7 +53,7 @@
 </table>
 
 
-<NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
+<NavLink class="btn btn-primary btn-sm" href="/admin/books/detailscreate">Create</NavLink>
 
 @code
 {
@@ -71,7 +71,7 @@
     }
 
     public string GetDetailsUrl(long id) => $"/admin/books/details/{id}";
-    public string GetEditUrl(long id) => $"/admin/books/edit/{id}";
+    public string GetEditUrl(long id) => $"/admin/books/detailsedit/{id}";
 
     public async Task RemoveBook(Book b)
     {
