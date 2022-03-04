@@ -63,15 +63,19 @@ using Mission10Final.Models;
 #nullable restore
 #line 46 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/OrderTable.razor"
        
+    // Set the table title (Default: Ordered)
     [Parameter]
     public string TableTitle { get; set; } = "Ordered";
 
+    // Get the Shopper records as an enumerable state
     [Parameter]
     public IEnumerable<Shopper> Shoppers { get; set; }
 
+    // Set a button label (Default: Ship)
     [Parameter]
-    public string ButtonLabel { get; set; } = "Shipped";
+    public string ButtonLabel { get; set; } = "Ship";
 
+    // Declare callback function
     [Parameter]
     public EventCallback<int> OrderSelected { get; set; }
 

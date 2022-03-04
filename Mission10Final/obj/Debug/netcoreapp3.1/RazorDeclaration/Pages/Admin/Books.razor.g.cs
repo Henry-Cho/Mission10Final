@@ -65,22 +65,30 @@ using Mission10Final.Models;
 #nullable restore
 #line 59 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/Books.razor"
  
+    // A Book repo
     public IBookRepository repo => Service;
+    // Get a book repo in an enumerable state
     public IEnumerable<Book> BookData { get; set; }
 
+    // When initialized
     protected async override Task OnInitializedAsync()
     {
         await UpdateData();
     }
 
+    // Set an async function
     public async Task UpdateData()
     {
+        // BookData is a list of Books info in the repo
         BookData = await repo.Books.ToListAsync();
     }
 
+    // Set the detail page url
     public string GetDetailsUrl(long id) => $"/admin/books/details/{id}";
+    // Set the edit page url
     public string GetEditUrl(long id) => $"/admin/books/detailsedit/{id}";
 
+    // Remove a book
     public async Task RemoveBook(Book b)
     {
         repo.DeleteBook(b);

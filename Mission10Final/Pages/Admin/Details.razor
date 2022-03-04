@@ -55,19 +55,24 @@
 <NavLink class="btn btn-secondary" href="/admin/books">Back</NavLink>
 
 @code {
+    // Inject a Book repository
     [Inject]
     public IBookRepository repo { get; set; }
 
+    // Id passed through the url
     [Parameter]
     public long Id { get; set; }
 
+    // A book info
     public Book b { get; set; }
 
+    // On parameter set
     protected override void OnParametersSet()
     {
         b = repo.Books.FirstOrDefault(x => x.BookID == Id);
     }
 
+    // Set a Edit url
     public string EditUrl => $"/admin/books/detailsedit/{Id}";
 
 }

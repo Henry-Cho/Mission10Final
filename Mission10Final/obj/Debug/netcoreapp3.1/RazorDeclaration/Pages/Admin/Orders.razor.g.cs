@@ -64,10 +64,14 @@ using Mission10Final.Models;
 #nullable restore
 #line 10 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/Orders.razor"
        
+    // Get a repo of Shopper Repo
     public IShopperRepository repo => Service;
 
+    // All orders
     public IEnumerable<Shopper> AllOrders { get; set; }
+    // Ordered books
     public IEnumerable<Shopper> OrderedBooks { get; set; }
+    // Shipped books
     public IEnumerable<Shopper> ShippedBooks { get; set; }
 
     protected async override Task OnInitializedAsync()
@@ -77,15 +81,21 @@ using Mission10Final.Models;
 
     public async Task UpdateData()
     {
+        // await til this assignment is done
         AllOrders = await repo.Shoppers.ToListAsync();
+        // Then, set ordered books
         OrderedBooks = AllOrders.Where(x => !x.OrderReceived);
+        // Last, set shipped books
         ShippedBooks = AllOrders.Where(x => x.OrderReceived);
     }
 
+    // Set a function to ship books
     public void ShipBook(int id) => UpdateShip(id, true);
 
+    // Set a function to cancel the shipment
     public void CancelShip(int id) => UpdateShip(id, false);
 
+    // Change the status of a certain order or shipment
     private void UpdateShip(int id, bool shipped)
     {
         Shopper s = repo.Shoppers.FirstOrDefault(x => x.ShopperId == id);

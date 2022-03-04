@@ -65,16 +65,24 @@ using Mission10Final.Models;
 #nullable restore
 #line 73 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/Editor.razor"
        
-    [Parameter]
 
+    // Id passed through the url
+    [Parameter]
     public long Id { get; set; } = 0;
+    // Set a theme color
     public string ThemColor => Id == 0 ? "primary" : "warning";
+    // Set a title text
     public string TitleText => Id == 0 ? "Create" : "Edit";
+
+    // Get a book info  (Default: new Book())
     public Book b { get; set; } = new Book();
+    // Get a Book repo
     public IBookRepository repo => Service;
 
+    // On parameter set
     protected override void OnParametersSet()
     {
+        // When the id is 0 (no record in the DB)
         if (Id != 0)
         {
             b = repo.Books.FirstOrDefault(x => x.BookID == Id);
@@ -83,6 +91,7 @@ using Mission10Final.Models;
 
     public void SaveBook()
     {
+        // When the id is 0 (no record in the DB)
         if (Id == 0)
         {
             repo.CreateBook(b);
@@ -91,10 +100,11 @@ using Mission10Final.Models;
         {
             repo.SaveBook(b);
         }
-
+        // Navigate to the main admin page with forcefully bringing the database info from the server
         NavManager.NavigateTo("/admin/books", true);
     }
 
+    // Inject Navigation Manager
     [Inject]
     public NavigationManager NavManager { get; set; }
 

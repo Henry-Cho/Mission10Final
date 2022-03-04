@@ -64,19 +64,24 @@ using Mission10Final.Models;
 #nullable restore
 #line 57 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/Details.razor"
        
+    // Inject a Book repository
     [Inject]
     public IBookRepository repo { get; set; }
 
+    // Id passed through the url
     [Parameter]
     public long Id { get; set; }
 
+    // A book info
     public Book b { get; set; }
 
+    // On parameter set
     protected override void OnParametersSet()
     {
         b = repo.Books.FirstOrDefault(x => x.BookID == Id);
     }
 
+    // Set a Edit url
     public string EditUrl => $"/admin/books/detailsedit/{Id}";
 
 

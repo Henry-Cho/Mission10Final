@@ -35,6 +35,7 @@ namespace Mission10Final.Models
         [Required(ErrorMessage = "Please the country:")]
         public string Country { get; set; }
 
+        // This indicates whether this shopper's order has been processed.
         [BindNever]
         public bool OrderReceived { get; set; }
     }

@@ -38,6 +38,8 @@ namespace Mission10Final
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            // Add Server-side blazor
+
             services.AddServerSideBlazor();
         }
 
@@ -89,6 +91,7 @@ namespace Mission10Final
                 // Enabling to route through cshtml in Pages folder
                 endpoints.MapRazorPages();
 
+                // Enabling blazor to this application and set a default path
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
