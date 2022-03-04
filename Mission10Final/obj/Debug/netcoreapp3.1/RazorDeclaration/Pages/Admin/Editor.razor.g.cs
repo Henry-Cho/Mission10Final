@@ -63,7 +63,7 @@ using Mission10Final.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/Editor.razor"
+#line 73 "/Users/hyungseokcho/Projects/Mission10Final/Mission10Final/Pages/Admin/Editor.razor"
        
     [Parameter]
 

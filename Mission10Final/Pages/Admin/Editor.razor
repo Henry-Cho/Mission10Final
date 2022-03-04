@@ -59,9 +59,10 @@
         <InputNumber class="form-control" @bind-Value="@b.PageCount"></InputNumber>
     </div>
 
-    <div class="form-group">
-        <label>Price($): </label>
+    <div class="input-group">
         <ValidationMessage For="@(() => b.Price)"></ValidationMessage>
+        <span class="input-group-text">$</span>
+        <span class="input-group-text">0.00</span>
         <InputNumber class="form-control" @bind-Value="@b.Price"></InputNumber>
     </div>
 
