@@ -55,10 +55,12 @@ namespace Mission10Final.Controllers
             return View(loginModel);
         }
 
+        // Logout
         public async Task<RedirectResult> Logout (string returnUrl = "/")
         {
             await signInManager.SignOutAsync();
 
+            // redirect to the main page
             return Redirect(returnUrl);
         }
     }
