@@ -18,24 +18,32 @@
     </div>
 
     <div class="m-1 p-1">
+        <div class="page-header">
+            <h1>Please, <small>enter correct information.</small></h1>
+        </div>
 
         <div class="text-danger" asp-validation-summary="All"></div>
 
-        <form method="post" asp-controller="Account" asp-action="Login">
+        <form method="post" asp-controller="Account" asp-action="Login" style="width: 50vw">
             <div class="form-group">
                 <label asp-for="Username">User Name: </label>
-                <input asp-for="Username" class="form-control"/>
+                <input asp-for="Username" class="form-control" />
             </div>
 
             <div class="form-group">
                 <label asp-for="Password">Password: </label>
-                <input asp-for="Password" type="password" class="form-control"/>
+                <input asp-for="Password" type="password" class="form-control" />
             </div>
 
             <button class="btn btn-primary" type="submit">Log In</button>
 
-            <input type="hidden" asp-for="ReturnUrl"/>
+            <input type="hidden" asp-for="ReturnUrl" />
         </form>
+
+        <div class="jumbotron">
+            <h1>Hello, Admin!</h1>
+            <p>Hope you have a great day!</p>
+        </div>
 
     </div>
 
